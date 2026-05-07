@@ -1,442 +1,576 @@
 <!DOCTYPE html>
-<html lang="es-ar">
-
+<html lang="es-ar" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords"
-        content="Desarrollador .Net, Desarrollador Backend, Desarrollador C#, Desarrollador .Net Cordoba Argentina, Desarrollador PL-SQL, Developer .Net, Developer Node.Js">
+    <meta name="keywords" content="Desarrollador .Net, Desarrollador Backend, Desarrollador C#, Desarrollador .Net Cordoba Argentina, Desarrollador PL-SQL, Developer .Net, Developer Node.Js">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Full Stack Developer .Net, Cordoba, Argentina, Developer Sql Server, Developer NodeJs, C#, HTML5 , Javascript, Jquery, Linq, lambda, Etity Framework, Nestjs">
-    <meta name="referrer" content="no-referrer-when-downgrade" />
-    <title>Portafolio Daniel Pinto | Full Stack Developer .Net y Nodejs</title>
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+    <meta name="description" content="Full Stack Developer .Net, Cordoba, Argentina, Developer Sql Server, Developer NodeJs, C#, HTML5 , Javascript, Jquery, Linq, lambda, Etity Framework, Nestjs">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <title>Daniel Pinto | Full Stack Developer .NET & NodeJS</title>
 
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
-    <!-- Owl Carousel -->
-    <link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
-    <link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Magnific Popup -->
-    <link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+    <!-- Tailwind CSS v4 -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome Icon -->
-    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6195FF',
+                        dark: '#10161A',
+                        gray: '#868F9B',
+                        surface: '#F4F4F4',
+                        light: '#FCFCFF'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
 
-    <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <!-- Dark Mode Init -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 
+    <style>
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(16, 22, 26, 0.9) 0%, rgba(97, 149, 255, 0.3) 100%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #6195FF 0%, #a8c0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+        }
+
+        .animate-delay-100 { animation-delay: 100ms; }
+        .animate-delay-200 { animation-delay: 200ms; }
+        .animate-delay-300 { animation-delay: 300ms; }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .dark .glass {
+            background: rgba(16, 22, 26, 0.6);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #6195FF, transparent);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-active {
+            color: #6195FF !important;
+        }
+
+        .nav-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #6195FF;
+            border-radius: 2px;
+        }
+    </style>
 </head>
+<body class="font-sans bg-light dark:bg-dark text-gray dark:text-gray-300 antialiased">
 
-<body>
-    <!-- Header -->
-    <header id="home">
-        <!-- Background Image -->
-        <div class="bg-img" style="background-image: url('./img/background1.jpg');">
-            <div class="overlay"></div>
-        </div>
-        <!-- /Background Image -->
-        <!-- Nav -->
-        <nav id="nav" class="navbar nav-transparent">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Logo -->
-                    <div class="navbar-brand">
-                        <a href="index.html"></a>
-                    </div>
-                    <!-- /Logo -->
-                    <!-- Collapse nav button -->
-                    <div class="nav-collapse">
-                        <span></span>
-                    </div>
-                    <!-- /Collapse nav button -->
-                </div>
+    <!-- Navbar -->
+    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#home" class="text-xl font-bold text-primary dark:text-white">
+                    <span class="text-dark dark:text-light">&lt;/&gt;</span> DP
+                </a>
 
-                <!--  Main navigation  -->
-                <ul class="main-nav nav navbar-nav navbar-right">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#about">Acerca de</a></li>
-                    <li><a href="#portfolio">Portafolio</a></li>
-                    <li><a href="#studies">Estudios</a></li>
-                    <li><a href="#experience">Experiencia</a></li>
-                    <li><a href="#contact">Contacto</a></li>
+                <!-- Desktop Nav -->
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li><a href="#home" class="nav-link text-sm font-medium text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Inicio</a></li>
+                    <li><a href="#about" class="nav-link text-sm font-medium text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Acerca de</a></li>
+                    <li><a href="#portfolio" class="nav-link text-sm font-medium text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Portafolio</a></li>
+                    <li><a href="#studies" class="nav-link text-sm font-medium text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Estudios</a></li>
+                    <li><a href="#experience" class="nav-link text-sm font-medium text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Experiencia</a></li>
+                    <li><a href="#contact" class="nav-link text-sm font-medium text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors">Contacto</a></li>
                 </ul>
-                <!-- /Main navigation -->
-            </div>
-        </nav>
-        <!-- /Nav -->
-        <!-- home wrapper -->
-        <div class="home-wrapper">
-            <div class="container">
-                <div class="row">
-                    <!-- home content -->
-                    <div class="col-md-10 col-md-offset-1">
-                        <div class="home-content">
-                            <h1 class="white-text">Desarrollador FullStack .Net y NodeJs Jr.</h1>
-                            <p class="white-text">
-                                Como desarrollador fullstack junior, he tenido la oportunidad de participar en el desarrollo 
-                                y construcción de software para varias empresas y universidad, 
-                                utilizando tecnologías como .Net C#, .Net, ASP.Net Core, SQL Server, Mysql, Mariadb, Nodejs, 
-                                typescript y framework frontend como angular. 
-                                Estoy ansioso por seguir aprendiendo y aplicar mis conocimientos en nuevos proyectos, 
-                                contribuyendo al éxito de los equipos en los que trabaje.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- /home content -->
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Cambiar tema">
+                        <i class="fa-solid fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-gray-300"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars text-xl text-dark dark:text-light"></i>
+                    </button>
                 </div>
             </div>
         </div>
-        <!-- /home wrapper -->
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-gray-200 dark:border-gray-700">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 text-dark dark:text-light hover:text-primary">Inicio</a>
+                <a href="#about" class="block py-2 text-dark dark:text-light hover:text-primary">Acerca de</a>
+                <a href="#portfolio" class="block py-2 text-dark dark:text-light hover:text-primary">Portafolio</a>
+                <a href="#studies" class="block py-2 text-dark dark:text-light hover:text-primary">Estudios</a>
+                <a href="#experience" class="block py-2 text-dark dark:text-light hover:text-primary">Experiencia</a>
+                <a href="#contact" class="block py-2 text-dark dark:text-light hover:text-primary">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="img/background1.jpg" alt="" class="w-full h-full object-cover">
+            <div class="absolute inset-0 gradient-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <p class="text-primary font-mono text-sm mb-4 animate-fade-in-up opacity-0">// Bienvenido a mi portafolio</p>
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-dark dark:text-white mb-6 animate-fade-in-up opacity-0 animate-delay-100">
+                Full Stack<br><span class="text-gradient">.NET & NodeJS</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray dark:text-gray-400 mb-8 max-w-2xl mx-auto animate-fade-in-up opacity-0 animate-delay-200">
+                Desarrollador con pasión por crear soluciones tecnológicas innovadoras. 
+                especializado en C#, ASP.NET Core, Node.js, Angular y bases de datos.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0 animate-delay-300">
+                <a href="#contact" class="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 hover:scale-105 transition-all shadow-lg shadow-primary/30">
+                    Contactar
+                </a>
+                <a href="#portfolio" class="px-8 py-3 border-2 border-dark dark:border-white text-dark dark:text-white font-semibold rounded-full hover:bg-dark hover:text-white dark:hover:bg-white dark:hover:text-dark transition-all">
+                    Ver proyectos
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white/60 hover:text-white transition-colors">
+                <i class="fa-solid fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
     </header>
-    <!-- /Header -->
-    <!-- About -->
-    <div id="about" class="section md-padding">
-        <!-- Container -->
-        <div class="container">
-            <!-- Row -->
-            <div class="row">
-                <!-- Section header -->
-                <div class="section-header text-center">
-                    <h2 class="title">Acerca de mi</h2>
-                </div>
-                <!-- /Section header -->
-                <!-- about -->
-                <div class="col-md-4">
-                    <div class="about">
-                        <i class="fa fa-cogs"></i>
-                        <h3>Perfil</h3>
-                        <p>
-                            Profesional de Analista de sistemas,
-                            Desarrollador de Sistemas de Información,
-                            Desarrollador web / programador web / frontend / backend.
-                            Con 2 años de experiencia en desarrollo de aplicaciones web y de escritorio.
-                        </p>
-                    </div>
-                </div>
-                <!-- /about -->
-                <!-- about -->
-                <div class="col-md-4">
-                    <div class="about">
-                        <i class="fa fa-magic"></i>
-                        <h3>Habilidades principales</h3>
-                        <p>
-                            Como desarrollador junior, tengo la capacidad de establecer los requerimientos de un sistema
-                            de información
-                            e implementar su solución informática. Poseo conocimientos básicos en herramientas y
-                            tecnologías
-                            como Visual Studio, Visual Studio Code, .Net C#, .Net,
-                            ASP.Net Core, SQL Server, Mysql, Mariadb, Nodejs, Typescript y Framework Frontend como
-                            Angular.
-                            Estoy entusiasmado por aplicar mis habilidades en proyectos desafiantes y
-                            seguir creciendo profesionalmente en el campo del desarrollo de software.
-                        </p>
-                    </div>
-                </div>
-                <!-- /about -->
-                <!-- about -->
-                <div class="col-md-4">
-                    <div class="about">
-                        <i class="fa fa-mobile"></i>
-                        <h3>Otras Habilidades</h3>
-                        <p>
-                            Además, estoy expandiendo mis habilidades aprendiendo Blazor para desarrollar aplicaciones
-                            web interactivas con C# y del lado del backend Nestjs.
-                            También estoy profundizando en Linux para entender mejor los sistemas operativos y sus
-                            entornos de desarrollo.
-                            Estoy utilizando Docker para crear y gestionar contenedores, lo cual facilita el despliegue
-                            y escalabilidad de aplicaciones. Además, estoy mejorando mi manejo de Git y GitHub para un
-                            control de versiones
-                            eficiente y una colaboración fluida en proyectos. Todo esto me está ayudando a ser un
-                            desarrollador más completo
-                            y preparado para enfrentar cualquier desafío.
-                        </p>
-                    </div>
-                </div>
-                <!-- /about -->
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 bg-surface dark:bg-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-mono text-sm mb-2">// Sobre mí</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-white">Acerca de mí</h2>
             </div>
-            <!-- /Row -->
-        </div>
-        <!-- /Container -->
-    </div>
-    <!-- /About -->
-    <!-- Portfolio -->
-    <div id="portfolio" class="section md-padding bg-grey">
-        <!-- Container -->
-        <div class="container">
-            <!-- Row -->
-            <div class="row">
-                <!-- Section header -->
-                <div class="section-header text-center">
-                    <h2 class="title">Portafolio / Trabajos</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1: Perfil -->
+                <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-user text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-4">Perfil Profesional</h3>
+                    <p class="text-gray dark:text-gray-400 leading-relaxed">
+                        Analista de sistemas y desarrollador con experiencia en el diseño e implementación 
+                        de soluciones informáticas. 2+ años desarrollando aplicaciones web y de escritorio 
+                        con metodologías ágiles.
+                    </p>
                 </div>
-                <!-- /Section header -->
-                <!-- Work -->
-                <div class="col-md-4 col-xs-6 work">
-                    <img class="img-responsive" src="img/logo-encode.png" alt="Encode S.A.">
-                    <div class="overlay"></div>
-                    <div class="work-content">
-                        <h3>Encode S.A.</h3>
-                        <div class="work-link">
-                            <a href="https://www.encodesa.com.ar/" target="_blank"><i
-                                    class="fa fa-external-link"></i></a>
-                            <a class="lightbox" href="img/logo-encode.png"><i class="fa fa-search"></i></a>
-                        </div>
+
+                <!-- Card 2: Habilidades -->
+                <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-code text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-4">Stack Tecnológico</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">C#</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">.NET</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">ASP.NET Core</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">Node.js</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">Angular</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">TypeScript</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">SQL Server</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-mono">Oracle</span>
                     </div>
                 </div>
-                <!-- /Work -->
-                <!-- Work -->
-                <div class="col-md-4 col-xs-6 work">
-                    <img class="img-responsive" src="img/logo_cids.jpg" alt="Thomas Greg Express S.A">
-                    <div class="overlay"></div>
-                    <div class="work-content">
-                        <span>CIDS</span>
-                        <div class="work-link">
-                            <a href="http://www.cids.frc.utn.edu.ar/" target="_blank"><i
-                                    class="fa fa-external-link"></i></a>
-                            <a class="lightbox" href="img/logo_cids.jpg"><i class="fa fa-search"></i></a>
-                        </div>
+
+                <!-- Card 3: Otras Habilidades -->
+                <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-layer-group text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-4">Habilidades Adicionales</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray dark:text-gray-400">
+                            <i class="fa-brands fa-docker text-primary"></i> Docker & Contenedores
+                        </li>
+                        <li class="flex items-center gap-3 text-gray dark:text-gray-400">
+                            <i class="fa-brands fa-git-alt text-primary"></i> Git & GitHub
+                        </li>
+                        <li class="flex items-center gap-3 text-gray dark:text-gray-400">
+                            <i class="fa-brands fa-linux text-primary"></i> Linux
+                        </li>
+                        <li class="flex items-center gap-3 text-gray dark:text-gray-400">
+                            <i class="fa-solid fa-cube text-primary"></i> Blazor & NestJS
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 4: IA & Herramientas Modernas -->
+                <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-microchip text-2xl text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark dark:text-white mb-4">IA & Herramientas Modernas</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-500 text-sm rounded-full font-mono">ChatGPT</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-500 text-sm rounded-full font-mono">Copilot</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-500 text-sm rounded-full font-mono">Cursor AI</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-500 text-sm rounded-full font-mono">Claude</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-500 text-sm rounded-full font-mono">Spec-Driven Dev</span>
                     </div>
                 </div>
-                <!-- /Work -->
-                <!-- Work -->
-                <div class="col-md-4 col-xs-6 work">
-                </div>
-                <!-- /Work -->
             </div>
-            <!-- /Row -->
         </div>
-        <!-- /Container -->
-    </div>
-    <!-- /Portfolio -->
-    <!-- Why Choose Us -->
-    <div id="studies" class="section md-padding">
-        <!-- Container -->
-        <div class="container">
-            <!-- Row -->
-            <div class="row">
-                <!-- Section header -->
-                <div class="section-header text-center">
-                    <h2 class="title">Estudios</h2>
-                </div>
-                <div class="col-xs-12 col-lg-12 col-md-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                        </ol>
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <img src="img/titulo-utn.jpg" alt="TUP" class="img-responsive">
-                                <div class="carousel-caption">
-                                    TECNICO SUPERIOR UNIVERSITARIO PROGRAMACION UNT-FRC
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="img/titulo-issd.jpg" alt="Analista en Sistema" class="img-responsive">
-                                <div class="carousel-caption">
-                                    TECNICO SUPERIOR EN ANáLISIS DE SISTEMA DE COMPUTACIÓN ISSD
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="img/titulo-cba.jpg" alt="Administrador de Bases de datos"
-                                    class="img-responsive">
-                                <div class="carousel-caption">
-                                    DESARROLLADOR FULLSTACK .NET
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button"
-                            data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button"
-                            data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 md:py-32 bg-white dark:bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-mono text-sm mb-2">// Proyectos</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-white">Portafolio</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1: Encode -->
+                <div class="card-hover group relative overflow-hidden rounded-2xl shadow-lg">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="img/logo-encode.png" alt="Encode S.A." class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">Encode S.A.</h3>
+                        <p class="text-gray-300 text-sm mb-4">Desarrollo FullStack ASP.NET MVC, Bootstrap, JavaScript y SQL Server</p>
+                        <a href="https://www.encodesa.com.ar/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                            Visitar sitio <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
-                    <hr>
-                    <h3>Estudios En Curso</h3>
-                    <ul>
-                        <li>• Ingeniería en Sistemas de Información - UTN-FRC</li>
+                </div>
+
+                <!-- Project 2: CIDS -->
+                <div class="card-hover group relative overflow-hidden rounded-2xl shadow-lg">
+                    <div class="aspect-video overflow-hidden bg-surface flex items-center justify-center">
+                        <img src="img/logo_cids.jpg" alt="CIDS" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 p-4">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <h3 class="text-2xl font-bold text-white mb-2">CIDS - UTN FRC</h3>
+                        <p class="text-gray-300 text-sm mb-4">Centro de Investigación. APIs REST, Angular, Oracle, Node.js</p>
+                        <a href="http://www.cids.frc.utn.edu.ar/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                            Visitar sitio <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studies Section -->
+    <section id="studies" class="py-20 md:py-32 bg-surface dark:bg-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-mono text-sm mb-2">// Educación</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-white">Formación Académica</h2>
+            </div>
+
+            <!-- Certificates Carousel -->
+            <div class="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+                <div class="min-w-[280px] md:min-w-[400px] snap-start">
+                    <img src="img/titulo-utn.jpg" alt="Tecnicatura UTN" class="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <p class="mt-3 text-center text-sm font-medium text-dark dark:text-white">Técnico Universitario en Programación - UTN FRC</p>
+                </div>
+                <div class="min-w-[280px] md:min-w-[400px] snap-start">
+                    <img src="img/titulo-issd.jpg" alt="Analista de Sistemas" class="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <p class="mt-3 text-center text-sm font-medium text-dark dark:text-white">Analista en Sistemas - ISSD</p>
+                </div>
+                <div class="min-w-[280px] md:min-w-[400px] snap-start">
+                    <img src="img/titulo-cba.jpg" alt="Certificado .NET" class="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <p class="mt-3 text-center text-sm font-medium text-dark dark:text-white">Certificado Desarrollador FullStack .NET</p>
+                </div>
+            </div>
+
+            <!-- Education List -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- En Curso -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-lg font-bold text-dark dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-primary"></i> En Curso
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="w-2 h-2 mt-2 bg-primary rounded-full"></span>
+                            <span class="text-gray dark:text-gray-400">Ingeniería en Sistemas de Información - UTN FRC</span>
+                        </li>
                     </ul>
-                    <br />
-                    <h3>Estudios Terminado </h3>
-                    <ul>
-                        <li>• Certificado de Desarrollador FullStack .NET Otorgado por Instituto
-                              Superior Politécnico Córdoba Realizado en 2021 Bajo el Programa de
-                              Inserción Laboral (PIL).  
-                        <li>• Analista en Sistemas de Información - 2022 ISSD</li>
-                        <li>• Tecnicatura Universitaria en Programación- 2015 UTN-FRC</li>
+                </div>
+
+                <!-- Completados -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
+                    <h3 class="text-lg font-bold text-dark dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-certificate text-primary"></i> Completados
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="w-2 h-2 mt-2 bg-green-500 rounded-full"></span>
+                            <span class="text-gray dark:text-gray-400">Desarrollador FullStack .NET - Instituto Superior Politécnico Córdoba (2021)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-2 h-2 mt-2 bg-green-500 rounded-full"></span>
+                            <span class="text-gray dark:text-gray-400">Analista en Sistemas - ISSD (2022)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-2 h-2 mt-2 bg-green-500 rounded-full"></span>
+                            <span class="text-gray dark:text-gray-400">Tecnicatura Universitaria en Programación - UTN FRC (2015)</span>
+                        </li>
                     </ul>
-                    <br>
-                    <h3>Estudios Complementarios</h3>
-                    <ol>
-                        <li>• <strong>Programando en C# - De Principiante a Profesional</strong> | Felipe Gavilán
-                            Microsoft MVP Udemy</li>
-                        <li>• <strong>Construyendo Minimal APIs con ASP.NET Core 8 y Dapper</strong> | Felipe Gavilán
-                            Microsoft MVP Udemy</li>
-                        <li>• <strong>Construyendo Minimal APIs con ASP.NET Core 9 y Dapper</strong> | Felipe Gavilán
-                            Microsoft MVP Udemy</li>
-                        <li>• <strong>Desarrollando Aplicaciones en Angular 19 y ASP.NET Core 9</strong> | Felipe
-                            Gavilán Microsoft MVP Udemy</li>
-                        <li>• <strong>Programando en Blazor - ASP.NET Core 9</strong> | Felipe
-                            Gavilán Microsoft MVP Udemy</li>
-                        <li>• <strong>NodeJS: De cero a experto</strong> | Fernando Herrera Udemy</li>
-                        <li>• <strong>Nest: Desarrollo backend escalable con Node</strong> | Fernando Herrera Udemy</li>
-                        <li>• <strong>Angular: De cero a experto - Edición 2025</strong> | Fernando Herrera Udemy</li>
-                    </ol>
                 </div>
             </div>
-            <!-- Row -->
-        </div>
-        <!-- /Container -->
-    </div>
-    <!-- experience -->
-    <div id="experience" class="section md-padding">
-        <!-- Container -->
-        <div class="container">
-            <!-- Row -->
-            <div class="row">
-                <!-- Section header -->
-                <div class="section-header text-center">
-                    <h2 class="title">Experiencia</h2>
+
+            <!-- Courses -->
+            <div class="mt-12">
+                <h3 class="text-xl font-bold text-dark dark:text-white mb-6 text-center">Cursos Complementarios</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-dark dark:text-white">C# - De Principiante a Profesional</p>
+                        <p class="text-xs text-gray dark:text-gray-500 mt-1">Felipe Gavilán | Microsoft MVP</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-dark dark:text-white">Minimal APIs ASP.NET Core 9</p>
+                        <p class="text-xs text-gray dark:text-gray-500 mt-1">Felipe Gavilán | Microsoft MVP</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-dark dark:text-white">Angular 19 + ASP.NET Core 9</p>
+                        <p class="text-xs text-gray dark:text-gray-500 mt-1">Felipe Gavilán | Microsoft MVP</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-dark dark:text-white">NodeJS: De cero a experto</p>
+                        <p class="text-xs text-gray dark:text-gray-500 mt-1">Fernando Herrera</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-dark dark:text-white">NestJS Backend Escalable</p>
+                        <p class="text-xs text-gray dark:text-gray-500 mt-1">Fernando Herrera</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-dark dark:text-white">Blazor ASP.NET Core 9</p>
+                        <p class="text-xs text-gray dark:text-gray-500 mt-1">Felipe Gavilán | Microsoft MVP</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow border border-gray-100 dark:border-gray-700">
+                        <p class="text-sm font-semibold text-dark dark:text-white">Angular: Cero a Experto 2025</p>
+                        <p class="text-xs text-gray dark:text-gray-500 mt-1">Fernando Herrera</p>
+                    </div>
                 </div>
-                <h3>CIDS - Centro de Investigación, Desarrollo y Transferencia de Sistemas de Información</h3>
-                <p>ene. 2022 - jun. 2024 · 2 años 6 meseses Jornada completa Córdoba, Argentina</p>
-                <strong>Desarrollador de software</strong>
-                <p>
-                   Desarrollo FullStack con tecnologías. Net C# Asp.NET, ApiRest, Node, Angular, Angular Material,
-                    Typescript y Base de datos Oracle 12c.
-                </p>
-                <hr>
-                <h3>Encode S.A.</h3>
-                <p>abr. 2021 - abr. 2022 · 1 año 1 mes Jornada parcial</p>
-                <strong>Desarrollador de software</strong>
-                <p>
-                   Desarrollo FullStack con tecnologías. Net C# Asp.NET MVC, Bootstrap, javascript y Base de datos 
-                    SQL SERVER.
-                </p>
             </div>
-            <!-- /Row -->
         </div>
-        <!-- /Container -->
-    </div>
-    <!-- Contact -->
-    <div id="contact" class="section md-padding">
+    </section>
 
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Row -->
-            <div class="row">
-
-                <!-- Section-header -->
-                <div class="section-header text-center">
-                    <h2 class="title">Estar en contacto</h2>
-                </div>
-                <!-- /Section-header -->
-                <!-- contact -->
-                <div class="col-sm-4">
-                    <div class="contact">
-                        <i class="fa fa-phone"></i>
-                        <h3>Telefono</h3>
-                        <p>3543588013 </p>
-                    </div>
-                </div>
-                <!-- /contact -->
-                <!-- contact -->
-                <div class="col-sm-4">
-                    <div class="contact">
-                        <i class="fa fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>daripinto@hotmail.com</p>
-                    </div>
-                </div>
-                <!-- /contact -->
-                <!-- contact -->
-                <div class="col-sm-4">
-                    <div class="contact">
-                        <i class="fa fa-map-marker"></i>
-                        <h3>Localicación</h3>
-                        <p>Unquillo, Argentina</p>
-                    </div>
-                </div>
-                <!-- /contact -->
-                <!-- contact form -->
-                <div class="col-md-8 col-md-offset-2">
-                    <!--<form class="contact-form" action="#contact">
-                        <input type="text" class="input" placeholder="Nombre" id="TxtMailName">
-                        <input type="email" class="input" placeholder="Email" id="TxtMailEmail">
-                        <input type="text" class="input" placeholder="Asunto" id="TxtMailSubject">
-                        <textarea class="input" placeholder="Mensaje" id="TxtMailMessage"></textarea>
-                        <button class="main-btn" id="BtnSendMail">Enviar Mensaje</button>
-                    </form>-->
-                </div>
-                <!-- /contact form -->
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 md:py-32 bg-white dark:bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-mono text-sm mb-2">// Trayectoria</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-white">Experiencia Laboral</h2>
             </div>
-            <!-- /Row -->
+
+            <div class="max-w-3xl mx-auto space-y-8">
+                <!-- Experience 1: CIDS -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="timeline-line"></div>
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-primary rounded-full border-4 border-white dark:border-dark"></div>
+                    <div class="bg-surface dark:bg-slate-800 rounded-2xl p-6 shadow-lg border-l-4 border-primary">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                            <h3 class="text-xl font-bold text-dark dark:text-white">CIDS - Centro de Investigación</h3>
+                            <span class="text-sm text-primary font-mono">ene. 2022 - jun. 2024</span>
+                        </div>
+                        <p class="text-sm text-gray dark:text-gray-400 mb-3">2 años 6 meses | Jornada completa | Córdoba, Argentina</p>
+                        <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-medium mb-3">Desarrollador de Software</span>
+                        <p class="text-gray dark:text-gray-400">
+                            Desarrollo FullStack con .NET C#, ASP.NET Core, API REST, Node.js, Angular, Angular Material, 
+                            TypeScript y base de datos Oracle 12c.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="px-2 py-1 bg-dark/5 dark:bg-white/5 text-xs rounded font-mono">C#</span>
+                            <span class="px-2 py-1 bg-dark/5 dark:bg-white/5 text-xs rounded font-mono">Angular</span>
+                            <span class="px-2 py-1 bg-dark/5 dark:bg-white/5 text-xs rounded font-mono">Oracle</span>
+                            <span class="px-2 py-1 bg-dark/5 dark:bg-white/5 text-xs rounded font-mono">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2: Encode -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="timeline-line"></div>
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-primary rounded-full border-4 border-white dark:border-dark"></div>
+                    <div class="bg-surface dark:bg-slate-800 rounded-2xl p-6 shadow-lg border-l-4 border-primary">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                            <h3 class="text-xl font-bold text-dark dark:text-white">Encode S.A.</h3>
+                            <span class="text-sm text-primary font-mono">abr. 2021 - abr. 2022</span>
+                        </div>
+                        <p class="text-sm text-gray dark:text-gray-400 mb-3">1 año 1 mes | Jornada parcial</p>
+                        <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-medium mb-3">Desarrollador de Software</span>
+                        <p class="text-gray dark:text-gray-400">
+                            Desarrollo FullStack con .NET C#, ASP.NET MVC, Bootstrap, JavaScript y base de datos SQL Server.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="px-2 py-1 bg-dark/5 dark:bg-white/5 text-xs rounded font-mono">ASP.NET MVC</span>
+                            <span class="px-2 py-1 bg-dark/5 dark:bg-white/5 text-xs rounded font-mono">Bootstrap</span>
+                            <span class="px-2 py-1 bg-dark/5 dark:bg-white/5 text-xs rounded font-mono">SQL Server</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /Container -->
-    </div>
-    <!-- /Contact -->
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32 bg-surface dark:bg-dark/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-mono text-sm mb-2">// Conectar</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark dark:text-white">Estar en contacto</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
+                <!-- Phone -->
+                <a href="tel:+543543588013" class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 text-center shadow-lg border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                        <i class="fa-solid fa-phone text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="font-bold text-dark dark:text-white mb-2">Teléfono</h3>
+                    <p class="text-gray dark:text-gray-400">+54 354 358 8013</p>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:daripinto@hotmail.com" class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 text-center shadow-lg border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                        <i class="fa-solid fa-envelope text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="font-bold text-dark dark:text-white mb-2">Email</h3>
+                    <p class="text-gray dark:text-gray-400">daripinto@hotmail.com</p>
+                </a>
+
+                <!-- Location -->
+                <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-8 text-center shadow-lg border border-gray-100 dark:border-gray-700 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                        <i class="fa-solid fa-location-dot text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="font-bold text-dark dark:text-white mb-2">Ubicación</h3>
+                    <p class="text-gray dark:text-gray-400">Unquillo, Córdoba, Argentina</p>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="text-center">
+                <a href="pdf/CurriculumPintoDanielRicardo.pdf" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 hover:scale-105 transition-all shadow-lg shadow-primary/30">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    Descargar CV
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="footer" class="sm-padding bg-dark">
-        <!-- Container -->
-        <div class="container">
-            <!-- Row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- footer logo -->
-                    <div class="footer-logo">
-                    </div>
-                    <!-- /footer logo -->
-                    <!-- footer follow -->
-                    <ul class="footer-follow">
-                        <li><a href="https://www.linkedin.com/in/audanielpinto" target="_blank"><i
-                                    class="fa fa-linkedin"></i></a></li>
-                        <li><a href="pdf/CurriculumPintoDanielRicardo.pdf" target="_blank"><i
-                                    class="fa fa-file"></i></a></li>
-                    </ul>
-                    <!-- /footer follow -->
-                    <!-- footer copyright -->
-                    <div class="footer-copyright">
-                    </div>
-                    <!-- /footer copyright -->
+    <footer class="bg-dark dark:bg-black py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-white">
+                    <span class="text-primary">&lt;/&gt;</span> Daniel Pinto
                 </div>
-            </div>
-            <!-- /Row -->
-        </div>
-        <!-- /Container -->
-    </footer>
-    <!-- /Footer -->
-    <!-- Back to top -->
-    <div id="back-to-top"></div>
-    <!-- /Back to top -->
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-    <!-- jQuery Plugins -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-</body>
 
+                <!-- Social Links -->
+                <div class="flex items-center gap-4">
+                    <a href="https://www.linkedin.com/in/audanielpinto" target="_blank" rel="noopener" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all" aria-label="Twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-sm text-gray-500">
+                    © 2024 Daniel Pinto. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center opacity-0 invisible transition-all hover:scale-110 z-40" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
 </html>
