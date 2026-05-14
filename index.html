@@ -7,7 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Full Stack Developer .Net, Cordoba, Argentina, Developer Sql Server, Developer NodeJs, C#, HTML5 , Javascript, Jquery, Linq, lambda, Etity Framework, Nestjs">
     <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="author" content="Daniel Pinto">
+    <meta name="theme-color" content="#6195FF">
+    <meta name="robots" content="index, follow">
     <title>Daniel Pinto | Full Stack Developer .NET & NodeJS</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Daniel Pinto | Full Stack Developer .NET & NodeJS">
+    <meta property="og:description" content="Portfolio de desarrollador FullStack especializado en C#, .NET, Angular, Node.js">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,13 +162,13 @@
                 <!-- Right Actions -->
                 <div class="flex items-center space-x-4">
                     <!-- Dark Mode Toggle -->
-                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Cambiar tema">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="Cambiar tema">
                         <i class="fa-solid fa-moon dark:hidden text-gray-600"></i>
                         <i class="fa-solid fa-sun hidden dark:block text-gray-300"></i>
                     </button>
 
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Abrir menú">
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label="Abrir menú">
                         <i class="fa-solid fa-bars text-xl text-dark dark:text-light"></i>
                     </button>
                 </div>
@@ -343,19 +355,19 @@
             <!-- Certificates Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 cursor-pointer" onclick="openModal('img/titulo-utn.jpg', 'Técnico Universitario en Programación - UTN FRC')">
-                    <img src="img/titulo-utn.jpg" alt="Tecnicatura UTN" class="w-full h-40 object-cover rounded-xl">
+                    <img src="img/titulo-utn.jpg" alt="Tecnicatura UTN" class="w-full h-40 object-cover rounded-xl" loading="lazy">
                     <p class="mt-3 text-center text-sm font-medium text-dark dark:text-white">Técnico Universitario en Programación - UTN FRC</p>
                 </div>
                 <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 cursor-pointer" onclick="openModal('img/titulo-issd.jpg', 'Analista en Sistemas - ISSD')">
-                    <img src="img/titulo-issd.jpg" alt="Analista de Sistemas" class="w-full h-40 object-cover rounded-xl">
+                    <img src="img/titulo-issd.jpg" alt="Analista de Sistemas" class="w-full h-40 object-cover rounded-xl" loading="lazy">
                     <p class="mt-3 text-center text-sm font-medium text-dark dark:text-white">Analista en Sistemas - ISSD</p>
                 </div>
                 <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 cursor-pointer" onclick="openModal('img/titulo-cba.jpg', 'Certificado Desarrollador FullStack .NET')">
-                    <img src="img/titulo-cba.jpg" alt="Certificado .NET" class="w-full h-40 object-cover rounded-xl">
+                    <img src="img/titulo-cba.jpg" alt="Certificado .NET" class="w-full h-40 object-cover rounded-xl" loading="lazy">
                     <p class="mt-3 text-center text-sm font-medium text-dark dark:text-white">Certificado Desarrollador FullStack .NET</p>
                 </div>
                 <div class="card-hover bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-100 dark:border-gray-700 cursor-pointer" onclick="openModal('img/ia.jpg', 'Certificación en Inteligencia Artificial')">
-                    <img src="img/ia.jpg" alt="Certificación IA" class="w-full h-40 object-cover rounded-xl">
+                    <img src="img/ia.jpg" alt="Certificación IA" class="w-full h-40 object-cover rounded-xl" loading="lazy">
                     <p class="mt-3 text-center text-sm font-medium text-dark dark:text-white">Certificación en Inteligencia Artificial</p>
                 </div>
             </div>
@@ -570,7 +582,7 @@
     </footer>
 
     <!-- Back to Top -->
-    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center opacity-0 invisible transition-all hover:scale-110 z-40" aria-label="Volver arriba">
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center opacity-0 invisible transition-all hover:scale-110 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 z-40" aria-label="Volver arriba">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
@@ -602,6 +614,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

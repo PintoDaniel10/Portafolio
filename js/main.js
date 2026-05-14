@@ -10,9 +10,15 @@ function openModal(imgSrc, text) {
     
     modalImg.src = imgSrc;
     modalText.textContent = text;
+    
+    // Error handler para imagen rota
+    modalImg.onerror = function() {
+        modalImg.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="%236180b0" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>';
+        modalImg.alt = 'Imagen no disponible';
+    };
+    
     modal.classList.remove('hidden');
     
-    // Animación de entrada
     setTimeout(() => {
         modalBackdrop.classList.remove('opacity-0');
         modalBackdrop.classList.add('opacity-100');
@@ -28,7 +34,6 @@ function closeModal() {
     const modalContent = document.getElementById('modal-content');
     const modalBackdrop = document.getElementById('modal-backdrop');
     
-    // Animación de salida
     modalBackdrop.classList.remove('opacity-100');
     modalBackdrop.classList.add('opacity-0');
     modalContent.classList.remove('opacity-100', 'scale-100');
@@ -45,6 +50,18 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
 });
 
+// Throttle utility function
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementById('nav');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -52,19 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const backToTop = document.getElementById('back-to-top');
 
-    // Navbar scroll effect
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
+    // Navbar scroll effect (con throttle)
+    window.addEventListener('scroll', throttle(() => {
         const currentScroll = window.pageYOffset;
-
         if (currentScroll > 50) {
             nav.classList.add('shadow-lg');
         } else {
             nav.classList.remove('shadow-lg');
         }
-
-        lastScroll = currentScroll;
-    });
+    }, 100));
 
     // Mobile menu toggle
     if (mobileMenuBtn && mobileMenu) {
@@ -80,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close mobile menu on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -98,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Back to top button
+    // Back to top button (con throttle)
     if (backToTop) {
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', throttle(() => {
             if (window.pageYOffset > 700) {
                 backToTop.classList.remove('opacity-0', 'invisible');
                 backToTop.classList.add('opacity-100', 'visible');
@@ -108,18 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 backToTop.classList.add('opacity-0', 'invisible');
                 backToTop.classList.remove('opacity-100', 'visible');
             }
-        });
+        }, 100));
 
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
-    // Active nav link on scroll (scroll spy)
+    // Active nav link on scroll (scroll spy) con throttle
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', throttle(() => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -134,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('nav-active');
             }
         });
-    });
+    }, 100));
 
     // Intersection Observer for animations
     const observerOptions = {
@@ -151,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Observe cards and sections for animation
     document.querySelectorAll('.card-hover').forEach(card => {
         card.style.opacity = '0';
         observer.observe(card);
