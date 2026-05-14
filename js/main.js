@@ -1,5 +1,50 @@
 ﻿// Portfolio JavaScript - Tailwind v4 Compatible
 
+// Funciones globales del modal
+function openModal(imgSrc, text) {
+    const modal = document.getElementById('cert-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalImg = document.getElementById('modal-img');
+    const modalText = document.getElementById('modal-text');
+    
+    modalImg.src = imgSrc;
+    modalText.textContent = text;
+    modal.classList.remove('hidden');
+    
+    // Animación de entrada
+    setTimeout(() => {
+        modalBackdrop.classList.remove('opacity-0');
+        modalBackdrop.classList.add('opacity-100');
+        modalContent.classList.remove('opacity-0', 'scale-95');
+        modalContent.classList.add('opacity-100', 'scale-100');
+    }, 10);
+    
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('cert-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    
+    // Animación de salida
+    modalBackdrop.classList.remove('opacity-100');
+    modalBackdrop.classList.add('opacity-0');
+    modalContent.classList.remove('opacity-100', 'scale-100');
+    modalContent.classList.add('opacity-0', 'scale-95');
+    
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+// Cerrar modal con Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementById('nav');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
